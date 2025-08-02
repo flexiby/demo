@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+  <div class="card">
+    <h2>Invoer</h2>
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <div class="field">
+        {{ form.container_number.label }}<br />
+        {{ form.container_number(size=40) }}
+      </div>
+      <div class="field">
+        {{ form.melder.label }}<br />
+        {{ form.melder(size=40) }}
+      </div>
+      <div class="field">
+        {{ form.datum.label }}<br />
+        {{ form.datum() }}
+      </div>
+      <div class="actions">
+        {{ form.submit(class_='primary') }}
+        {{ form.cancel(class_='secondary') }}
+      </div>
+    </form>
+  </div>
+{% endblock %}

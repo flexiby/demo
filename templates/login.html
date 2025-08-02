@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Inloggen{% endblock %}
+{% block content %}
+  <div class="card">
+    <h2>Inloggen</h2>
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <div class="field">
+        {{ form.username.label }}<br />
+        {{ form.username(size=32) }}
+      </div>
+      <div class="field">
+        {{ form.password.label }}<br />
+        {{ form.password(size=32) }}
+      </div>
+      <div class="field inline">
+        {{ form.remember() }} {{ form.remember.label }}
+      </div>
+      <div class="actions">
+        {{ form.submit(class_='primary') }}
+      </div>
+      <div class="note">
+        Als je admin wilt: gebruik gebruikersnaam <strong>admin</strong> en wachtwoord <strong>admin123</strong> (pas dit meteen aan in productie!).
+      </div>
+    </form>
+  </div>
+{% endblock %}

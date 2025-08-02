@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+  <div class="card">
+    <h2>Admin Overzicht</h2>
+    <h3>Inzendingen</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Containernummer</th>
+          <th>Melder</th>
+          <th>Datum</th>
+          <th>Aangemaakt</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in submissions %}
+          <tr>
+            <td>{{ s.id }}</td>
+            <td>{{ s.container_number }}</td>
+            <td>{{ s.melder }}</td>
+            <td>{{ s.datum.strftime('%Y-%m-%d') }}</td>
+            <td>{{ s.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="5">Geen inzendingen gevonden.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h3>Gebruikers</h3>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Gebruikersnaam</th><th>Admin</th></tr>
+      </thead>
+      <tbody>
+        {% for u in users %}
+          <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.username }}</td>
+            <td>{{ 'Ja' if u.is_admin else 'Nee' }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
